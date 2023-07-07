@@ -4,7 +4,7 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "K6_ITERATIONS=120 k6 run -e MY_HOSTNAME=test.k6.io env-variables.js"
   },
   "keywords": [],
   "author": "",
