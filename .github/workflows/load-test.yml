@@ -1,4 +1,4 @@
-
+on: [push]
 k6_cloud_test:
   name: k6 cloud test run
   runs-on: ubuntu-latest
