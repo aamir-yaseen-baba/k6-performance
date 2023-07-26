@@ -1,14 +1,16 @@
+name: Main Workflow
 on: [push]
-k6_cloud_test:
-  name: k6 cloud test run
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-
-    - name: Run k6 cloud test
-      uses: k6io/action@v0.1
-      with:
-        filename: thresholds-all.js
-        cloud: true
-        token: ${{ secrets.K6_CLOUD_API_TOKEN }}
+jobs:
+  build:
+    name: Run k6 test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run k6 cloud test
+        uses: grafana/k6-action@v0.3.0
+        with:
+          filename: my-load-test.js
+          flags: --vus 50 --duration 10s
+          cloud: true
+          token: ${{ secrets.K6_CLOUD_API_TOKEN }}
